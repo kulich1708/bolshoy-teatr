@@ -1,0 +1,587 @@
+// файл обнуления =====================================
+
+@import "null.scss";
+
+// ====================================================
+
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2"),
+			url("../fonts/#{$file_name}.ttf") format("truetype");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+// Шрифты  ===========================================
+
+// &display-swap
+@import "fonts.scss";
+
+@import url("https://fonts.googleapis.com/css?family=Heebo:regular,500,700,900&display-swap");
+
+// ===================================================
+
+// Иконочные шрифты
+
+@import "icon.scss";
+
+// ===================================================
+
+// Шрифт по умолчанию ================================
+
+$fontfamily: "";
+
+// ===================================================
+
+// Переменные ========================================
+
+$minWidth: 320;
+$mw: 1110;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 869.98;
+$md4: 575.98;
+$md5: 424.98;
+// ===================================================
+// Общие стили =======================================
+body {
+	font-family: "heebo";
+	background: #333333;
+	font-size: 14px;
+	&._lock {
+		overflow: hidden;
+	}
+}
+
+// ===================================================
+
+// Оболочка ==========================================
+
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	&_loaded {
+	}
+}
+
+// ====================================================
+
+// Основная сетка
+
+._container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	padding: 0 40px;
+	@media screen and (max-width: $md2+px) {
+		max-width: none;
+		padding: 0 30px;
+	}
+	@media screen and (max-width: $md3+px) {
+		padding: 0 15px;
+	}
+	&--ultrawide {
+		max-width: 100%;
+		padding: 0;
+		padding-left: 150px;
+	}
+}
+.about {
+	padding-top: 150px;
+	@media screen and (max-width: $md3+px) {
+		padding-top: 90px;
+	}
+	&__title {
+	}
+
+	&__content {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		@media screen and (max-width: $md2+px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__column {
+		margin-right: 30px;
+		align-self: flex-start;
+		@media screen and (max-width: 770px) {
+			flex: 0 1 100%;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__info-text {
+	}
+
+	&__info-number {
+	}
+
+	&__imageblock {
+		max-width: 350px;
+		@media screen and (max-width: $md2+px) {
+			display: none;
+		}
+	}
+}
+.info-text-about {
+	flex: 0 0 445px;
+	&__content {
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 150%;
+		color: #ffffff;
+		@media screen and (max-width: 770px) {
+			text-align: center;
+		}
+	}
+}
+.info-number-about {
+	flex: 0 0 220px;
+	@media screen and (max-width: 770px) {
+		margin-top: 30px;
+	}
+	&__content {
+		@media screen and (max-width: 770px) {
+			text-align: center;
+		}
+	}
+
+	&__row {
+		display: inline-block;
+		margin-bottom: 25px;
+		margin-right: 60px;
+		@media screen and (max-width: $md5+px) {
+			margin-right: 0;
+			display: block;
+		}
+		&:last-child {
+			margin-bottom: 0;
+			margin-right: 0;
+		}
+	}
+
+	&__imageblock {
+		display: inline-block;
+		max-width: 70px;
+		min-width: 70px;
+		max-height: 70px;
+		min-height: 70px;
+		margin-bottom: 15px;
+	}
+
+	&__text {
+		font-family: "Open Sans Condensed";
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 22px;
+		letter-spacing: 0.05em;
+		color: #ffffff;
+		span {
+			color: #d1a954;
+		}
+	}
+}
+.direction {
+	padding-top: 150px;
+	padding-bottom: 150px;
+	@media screen and (max-width: $md3+px) {
+		padding-top: 90px;
+		padding-bottom: 90px;
+	}
+	position: relative;
+	&__title {
+	}
+
+	&__slider {
+		overflow: hidden;
+	}
+
+	&__name {
+		font-size: 24px;
+		left: 0;
+		top: 0;
+	}
+
+	&__date {
+		font-size: 18px;
+		position: absolute;
+		writing-mode: vertical-lr;
+		transform: rotate(-180deg);
+		left: 0;
+		bottom: 0;
+	}
+	.swiper-slide {
+		max-width: 440px;
+		display: inline-block;
+	}
+}
+.slide__info-wrap {
+	z-index: 99;
+	position: absolute;
+	font-family: "Open Sans Condensed";
+	font-style: normal;
+	font-weight: bold;
+	line-height: 25px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #ffffff;
+	width: 100%;
+	height: 100%;
+	padding: 40px;
+}
+.slide__info {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.blackout {
+	position: relative;
+	&:after {
+		background: rgba(51, 51, 51, 0.65);
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+}
+.slide__imageblock {
+	position: relative;
+}
+.benefits {
+	&__back {
+		background: linear-gradient(0deg, rgba(51, 51, 51, 0.9), rgba(51, 51, 51, 0.9)),
+			url("../img/benefits.jpg") no-repeat center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 550px;
+		@media screen and (max-width: $md5+px) {
+			flex-wrap: wrap;
+			text-align: center;
+		}
+	}
+	&__yers {
+		font-family: "Open Sans Condensed";
+		font-style: normal;
+		font-weight: bold;
+		font-size: 72px;
+		line-height: 98px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #d1a954;
+		margin-right: 125px;
+		@media screen and (max-width: $md2+px) {
+			margin-right: 85px;
+		}
+		@media screen and (max-width: $md3+px) {
+			margin-right: 25px;
+		}
+		@media screen and (max-width: $md5+px) {
+			flex: 0 1 100%;
+		}
+	}
+
+	&__content {
+		@media screen and (max-width: $md5+px) {
+			flex: 0 1 100%;
+		}
+		display: inline-block;
+	}
+
+	&__stars {
+		color: #d1a954;
+		display: flex;
+		margin-bottom: 25px;
+		@media screen and (max-width: $md5+px) {
+			justify-content: center;
+		}
+	}
+
+	&__text {
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: bold;
+		font-size: 36px;
+		line-height: 150%;
+		color: #ffffff;
+		display: inline;
+		max-width: 475px;
+		@media screen and (max-width: $md1+px) {
+			font-size: 34px;
+		}
+		@media screen and (max-width: $md2+px) {
+			font-size: 29px;
+		}
+		@media screen and (max-width: $md3+px) {
+			font-size: 25px;
+		}
+	}
+}
+.icon-star {
+	width: 22px;
+	margin-right: 22px;
+	&:last-child {
+		margin-right: 0;
+	}
+}
+.partners {
+	padding-top: 150px;
+	@media screen and (max-width: $md3+px) {
+		padding-top: 90px;
+	}
+	&__title {
+	}
+
+	&__content {
+		overflow: hidden;
+	}
+
+	&__img {
+		margin-bottom: 80px;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+.metsenat {
+	padding-top: 150px;
+	padding-bottom: 80px;
+	@media screen and (max-width: $md2+px) {
+		padding-bottom: 60px;
+	}
+	@media screen and (max-width: $md3+px) {
+		padding-top: 90px;
+		padding-bottom: 90px;
+	}
+	&__title {
+	}
+
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		@media screen and (max-width: $md1+px) {
+			flex-direction: column-reverse;
+		}
+	}
+
+	&__column {
+		align-self: flex-start;
+	}
+}
+.contact-metsenat {
+	display: flex;
+	flex-direction: column;
+	margin-right: 125px;
+	font-family: "Open Sans Condensed";
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 22px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #ffffff;
+	min-width: 255px;
+	@media screen and (max-width: $md1+px) {
+		flex-direction: row;
+		justify-content: space-between;
+		margin-right: 0;
+		min-width: 0;
+		flex: 0 1 100%;
+		min-width: 100%;
+	}
+	@media screen and (max-width: $md5+px){
+		flex-direction: column;
+	}
+	&__column {
+		flex: 0 1 100%;
+		margin-bottom: 25px;
+		a,
+		p {
+			margin-bottom: 25px;
+			display: block;
+			span {
+				position: relative;
+				&:after {
+					position: absolute;
+					content: "";
+					width: 0;
+					height: 2px;
+					background: #d1a954;
+					bottom: 0;
+					left: 50%;
+					transition: 0.2s;
+				}
+				&:hover {
+					color: #d1a954;
+					transition: 0.2s;
+					&:after {
+						left: 0;
+						width: 100%;
+						transition: 0.2s;
+					}
+				}
+				&:not(:hover) {
+					transition: 0.2s;
+				}
+			}
+		}
+		a:last-child,
+		p:last-child {
+			margin-bottom: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		@media screen and (max-width: $md1+px) {
+			flex: 0 1 50%;
+			&:last-child {
+				text-align: right;
+			}
+		}
+		@media screen and (max-width: $md5+px){
+			text-align: center !important;
+		}
+	}
+}
+.form-metsenat {
+	@media screen and (max-width: $md1+px) {
+		margin-bottom: 80px;
+	}
+	@media screen and (max-width: $md2+px) {
+		margin-bottom: 60px;
+	}
+	@media screen and (max-width: $md4+px) {
+		margin-bottom: 50px;
+	}
+	&__content {
+		display: flex;
+		justify-content: flex-start;
+		@media screen and (max-width: 700px) {
+			flex-wrap: wrap;
+		}
+	}
+	input {
+		outline: none;
+		height: 35px;
+		margin: 0 30px 30px 0;
+		border: 1px solid #616161;
+		background: #444444;
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 150%;
+		display: flex;
+		align-items: center;
+		padding: 0px 0px 0px 15px;
+		color: #989898;
+		&.message {
+			height: 100px;
+			margin: 0;
+		}
+	}
+	input:focus {
+		opacity: 0.6;
+	}
+	input:-internal-autofill-selected {
+		background-color: #444444;
+	}
+	&__column {
+	}
+	&__column-data {
+		display: flex;
+		flex: 0 1 420px;
+		flex-wrap: wrap;
+		input {
+			width: 180px;
+			@media screen and (max-width: 700px) {
+				&:nth-child(2n) {
+					margin-right: 0;
+				}
+				flex: 0 1 calc(50% - 15px);
+			}
+			@media screen and (max-width: $md5+px) {
+				flex: 0 1 100%;
+				margin-right: 0;
+			}
+		}
+		@media screen and (max-width: 700px) {
+			flex: 0 1 100%;
+		}
+	}
+	&__column-message {
+		flex-grow: 1;
+		input {
+			width: 100%;
+		}
+		@media screen and (max-width: 700px) {
+			flex: 0 1 100%;
+		}
+	}
+
+	&__bottom {
+	}
+}
+.bottom-form-metsenat {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+	@media screen and (max-width: 700px) {
+		flex-direction: column-reverse;
+		margin-top: 40px;
+	}
+
+	&__column {
+		@media screen and (max-width: 700px) {
+			text-align: center;
+		}
+	}
+	&__column-text {
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 150%;
+		color: #989898;
+		flex: 0 1 390px;
+		@media screen and (max-width: 700px) {
+			flex: 0 1 100%;
+			margin-top: 30px;
+		}
+	}
+	&__column-btn {
+		@media screen and (max-width: 700px) {
+			flex: 0 1 100%;
+		}
+	}
+}
+// Импорты файлов scss ===============================
+
+@import "header";
+
+@import "ui";
+
+@import "form";
+
+@import "home";
+
+@import "footer";
+
+// ===================================================
